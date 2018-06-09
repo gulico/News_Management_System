@@ -17,6 +17,7 @@ namespace News_Management_System
         DBHelper db;
         System.IO.FileInfo file;
         string destinationFile = "";
+        int limit = -1;//-1初始值；0最高级别管理员；1新闻审核员
         public enum newsType
         {
             社会 = 0,
@@ -38,6 +39,29 @@ namespace News_Management_System
             skinComboBox1.SelectedIndex = 0;
             db = new DBHelper();
             db.Connection();
+        }
+
+        public manager(int newlimit)
+        {
+            InitializeComponent();
+            newstype.SelectedIndex = (int)newsType.社会;
+            skinComboBox1.SelectedIndex = 0;
+            db = new DBHelper();
+            db.Connection();
+            this.limit = newlimit;
+            if(this.limit==1)//为新闻审核员
+            {
+                skinTabPage1.Parent = null;
+                skinTabPage2.Parent = null;
+                skinTabPage3.Parent = null;
+                skinTabPage4.Parent = null;
+            }
+            else if (this.limit == 2)
+            {
+                skinTabPage3.Parent = null;
+                skinTabPage4.Parent = null;
+                skinTabPage5.Parent = null;
+            }
         }
 
         /*上传图片*/
@@ -211,6 +235,7 @@ namespace News_Management_System
         {
             skinDataGridView1.DataSource = db.show_usertable().Tables[0];
             skinDataGridView2.DataSource = db.show_newstable().Tables[0];
+            skinDataGridView3.DataSource = db.show_newsUnpassed().Tables[0];
         }
         /*双击任一单元格显示修改页面*/
         private void skinDataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -260,6 +285,7 @@ namespace News_Management_System
             skinDataGridView2.DataSource = db.show_newstable().Tables[0];
         }
 
+        /*按下按钮删除新闻*/
         private void skinButton4_Click(object sender, EventArgs e)
         {
             int id;
@@ -273,6 +299,28 @@ namespace News_Management_System
             else
             {
                 MessageBox.Show("删除失败");
+            }
+        }
+
+        /*刷新审核表格*/
+        private void skinButton7_Click(object sender, EventArgs e)
+        {
+            skinDataGridView3.DataSource = db.show_newsUnpassed().Tables[0];
+        }
+
+        private void skinButton6_Click(object sender, EventArgs e)
+        {
+            int id;
+            id = int.Parse(this.skinDataGridView3[0, skinDataGridView3.CurrentRow.Index].Value.ToString());
+            Boolean passed_success = db.update_NewsPassed(id);
+            if (passed_success)
+            {
+                skinDataGridView3.DataSource = db.show_newsUnpassed().Tables[0];
+                MessageBox.Show("新闻通过审核");
+            }
+            else
+            {
+                MessageBox.Show("审核失败");
             }
         }
     }

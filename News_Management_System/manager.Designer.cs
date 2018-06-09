@@ -38,6 +38,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.skinTabControl1 = new CCWin.SkinControl.SkinTabControl();
             this.skinTabPage1 = new CCWin.SkinControl.SkinTabPage();
             this.newsarticle = new CCWin.SkinControl.SkinTextBox();
@@ -71,6 +75,7 @@
             this.name_TextBox = new CCWin.SkinControl.SkinTextBox();
             this.skinLabel7 = new CCWin.SkinControl.SkinLabel();
             this.skinTabPage2 = new CCWin.SkinControl.SkinTabPage();
+            this.skinLabel13 = new CCWin.SkinControl.SkinLabel();
             this.skinButton4 = new CCWin.SkinControl.SkinButton();
             this.skinButton5 = new CCWin.SkinControl.SkinButton();
             this.skinDataGridView2 = new CCWin.SkinControl.SkinDataGridView();
@@ -79,7 +84,10 @@
             this.skinButton3 = new CCWin.SkinControl.SkinButton();
             this.skinButton2 = new CCWin.SkinControl.SkinButton();
             this.skinDataGridView1 = new CCWin.SkinControl.SkinDataGridView();
-            this.skinLabel13 = new CCWin.SkinControl.SkinLabel();
+            this.skinTabPage5 = new CCWin.SkinControl.SkinTabPage();
+            this.skinButton6 = new CCWin.SkinControl.SkinButton();
+            this.skinButton7 = new CCWin.SkinControl.SkinButton();
+            this.skinDataGridView3 = new CCWin.SkinControl.SkinDataGridView();
             this.skinTabControl1.SuspendLayout();
             this.skinTabPage1.SuspendLayout();
             this.skinTabPage3.SuspendLayout();
@@ -88,6 +96,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.skinDataGridView2)).BeginInit();
             this.skinTabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.skinDataGridView1)).BeginInit();
+            this.skinTabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.skinDataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // skinTabControl1
@@ -98,6 +108,7 @@
             this.skinTabControl1.Controls.Add(this.skinTabPage3);
             this.skinTabControl1.Controls.Add(this.skinTabPage2);
             this.skinTabControl1.Controls.Add(this.skinTabPage4);
+            this.skinTabControl1.Controls.Add(this.skinTabPage5);
             this.skinTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.skinTabControl1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinTabControl1.HeadBack = null;
@@ -113,7 +124,7 @@
             this.skinTabControl1.PageHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageHover")));
             this.skinTabControl1.PageImagePosition = CCWin.SkinControl.SkinTabControl.ePageImagePosition.Left;
             this.skinTabControl1.PageNorml = null;
-            this.skinTabControl1.SelectedIndex = 2;
+            this.skinTabControl1.SelectedIndex = 4;
             this.skinTabControl1.Size = new System.Drawing.Size(642, 428);
             this.skinTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.skinTabControl1.TabIndex = 0;
@@ -787,6 +798,18 @@
             this.skinTabPage2.TabItemImage = ((System.Drawing.Image)(resources.GetObject("skinTabPage2.TabItemImage")));
             this.skinTabPage2.Text = "编辑新闻";
             // 
+            // skinLabel13
+            // 
+            this.skinLabel13.AutoSize = true;
+            this.skinLabel13.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel13.BorderColor = System.Drawing.Color.White;
+            this.skinLabel13.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel13.Location = new System.Drawing.Point(3, 369);
+            this.skinLabel13.Name = "skinLabel13";
+            this.skinLabel13.Size = new System.Drawing.Size(217, 17);
+            this.skinLabel13.TabIndex = 5;
+            this.skinLabel13.Text = "*提示：双击任一单元格修改单元格内容";
+            // 
             // skinButton4
             // 
             this.skinButton4.BackColor = System.Drawing.Color.Transparent;
@@ -970,17 +993,94 @@
             this.skinDataGridView1.TitleBackColorEnd = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(242)))));
             this.skinDataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.skinDataGridView1_CellContentDoubleClick);
             // 
-            // skinLabel13
+            // skinTabPage5
             // 
-            this.skinLabel13.AutoSize = true;
-            this.skinLabel13.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel13.BorderColor = System.Drawing.Color.White;
-            this.skinLabel13.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel13.Location = new System.Drawing.Point(3, 369);
-            this.skinLabel13.Name = "skinLabel13";
-            this.skinLabel13.Size = new System.Drawing.Size(217, 17);
-            this.skinLabel13.TabIndex = 5;
-            this.skinLabel13.Text = "*提示：双击任一单元格修改单元格内容";
+            this.skinTabPage5.BackColor = System.Drawing.Color.White;
+            this.skinTabPage5.Controls.Add(this.skinButton6);
+            this.skinTabPage5.Controls.Add(this.skinButton7);
+            this.skinTabPage5.Controls.Add(this.skinDataGridView3);
+            this.skinTabPage5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.skinTabPage5.Location = new System.Drawing.Point(0, 36);
+            this.skinTabPage5.Name = "skinTabPage5";
+            this.skinTabPage5.Size = new System.Drawing.Size(642, 392);
+            this.skinTabPage5.TabIndex = 4;
+            this.skinTabPage5.TabItemImage = ((System.Drawing.Image)(resources.GetObject("skinTabPage5.TabItemImage")));
+            this.skinTabPage5.Text = "新闻审核";
+            // 
+            // skinButton6
+            // 
+            this.skinButton6.BackColor = System.Drawing.Color.Transparent;
+            this.skinButton6.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinButton6.DownBack = null;
+            this.skinButton6.Location = new System.Drawing.Point(483, 366);
+            this.skinButton6.MouseBack = null;
+            this.skinButton6.Name = "skinButton6";
+            this.skinButton6.NormlBack = null;
+            this.skinButton6.Size = new System.Drawing.Size(75, 23);
+            this.skinButton6.TabIndex = 6;
+            this.skinButton6.Text = "通过审核";
+            this.skinButton6.UseVisualStyleBackColor = false;
+            this.skinButton6.Click += new System.EventHandler(this.skinButton6_Click);
+            // 
+            // skinButton7
+            // 
+            this.skinButton7.BackColor = System.Drawing.Color.Transparent;
+            this.skinButton7.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinButton7.DownBack = null;
+            this.skinButton7.Location = new System.Drawing.Point(564, 366);
+            this.skinButton7.MouseBack = null;
+            this.skinButton7.Name = "skinButton7";
+            this.skinButton7.NormlBack = null;
+            this.skinButton7.Size = new System.Drawing.Size(75, 23);
+            this.skinButton7.TabIndex = 5;
+            this.skinButton7.Text = "刷新数据";
+            this.skinButton7.UseVisualStyleBackColor = false;
+            // 
+            // skinDataGridView3
+            // 
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
+            this.skinDataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.skinDataGridView3.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.skinDataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.skinDataGridView3.ColumnFont = null;
+            this.skinDataGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.skinDataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.skinDataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.skinDataGridView3.ColumnSelectForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.skinDataGridView3.DefaultCellStyle = dataGridViewCellStyle11;
+            this.skinDataGridView3.EnableHeadersVisualStyles = false;
+            this.skinDataGridView3.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.skinDataGridView3.HeadFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinDataGridView3.HeadSelectForeColor = System.Drawing.SystemColors.HighlightText;
+            this.skinDataGridView3.Location = new System.Drawing.Point(0, 0);
+            this.skinDataGridView3.Name = "skinDataGridView3";
+            this.skinDataGridView3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.skinDataGridView3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.skinDataGridView3.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.skinDataGridView3.RowTemplate.Height = 23;
+            this.skinDataGridView3.Size = new System.Drawing.Size(642, 360);
+            this.skinDataGridView3.TabIndex = 1;
+            this.skinDataGridView3.TitleBack = null;
+            this.skinDataGridView3.TitleBackColorBegin = System.Drawing.Color.White;
+            this.skinDataGridView3.TitleBackColorEnd = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(242)))));
             // 
             // manager
             // 
@@ -1008,6 +1108,8 @@
             this.skinTabPage4.ResumeLayout(false);
             this.skinTabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.skinDataGridView1)).EndInit();
+            this.skinTabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.skinDataGridView3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1056,5 +1158,9 @@
         private CCWin.SkinControl.SkinButton skinButton5;
         private CCWin.SkinControl.SkinDataGridView skinDataGridView2;
         private CCWin.SkinControl.SkinLabel skinLabel13;
+        private CCWin.SkinControl.SkinTabPage skinTabPage5;
+        private CCWin.SkinControl.SkinButton skinButton6;
+        private CCWin.SkinControl.SkinButton skinButton7;
+        private CCWin.SkinControl.SkinDataGridView skinDataGridView3;
     }
 }

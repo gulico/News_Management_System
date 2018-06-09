@@ -20,12 +20,14 @@ namespace News_Management_System
 
         /*
          * 登录读取用户名密码
-         * 返回值 ：0用户名不存在 ，-1密码错误，1登陆成功
+         * 返回值 ：0用户名不存在 ，-1密码错误，
+         * 1普通用户登陆成功，2最高权限管理员，3新闻审核员，4新闻录入员
          */
         public int sign_in(string name, string psd, Boolean isUser)
         {
             Boolean Havename = false;
             string search_psd = "";
+            DataSet ds = new DataSet();
             try
             {
                 con.Open();
@@ -36,7 +38,6 @@ namespace News_Management_System
                     sql = "select * from admin_info where name = '" + name + "'";
                 //获取数据数据适配器
                 SqlDataAdapter data = new SqlDataAdapter(sql, con);
-                DataSet ds = new DataSet();
                 data.Fill(ds);//把查询到的数据放入DataSet ds数据集中
                 if (ds.Tables[0].Rows.Count > 0)//用户存在
                 {
@@ -52,8 +53,20 @@ namespace News_Management_System
             if (con.State == ConnectionState.Open)
                 con.Close();
 
-            if (search_psd.Equals(psd))
-                return 1;
+            if (search_psd.Equals(psd)){
+                if (isUser)
+                    return 1;
+                else
+                {
+                    int limit = int.Parse(ds.Tables[0].Rows[0]["limit"].ToString().Trim());
+                    if (limit == 0)//最高权限管理员
+                        return 2;
+                    else if (limit == 1)//新闻审核员
+                        return 3;
+                    else
+                        return 4;
+                }
+            }  
             else if (Havename)
                 return -1;
             else
@@ -117,7 +130,7 @@ namespace News_Management_System
             {
                 con.Open();
                 string sql;
-                sql = "insert into news(title,type,author,time,context,picture)Values('" + title + "'," + type + ",'" + author + "','" + datatime + "','" + context + "','" + pic +"')";
+                sql = "insert into news(title,type,author,time,context,picture,passed)Values('" + title + "'," + type + ",'" + author + "','" + datatime + "','" + context + "','" + pic +"',0)";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 success = true;
@@ -386,7 +399,7 @@ namespace News_Management_System
         }
 
         /*
-         * 获取特定type的新闻
+         * 获取特定type而且通过审核的新闻
          * 返回值：DataSet
          */
         public DataSet find_newsByType(int type)
@@ -396,7 +409,7 @@ namespace News_Management_System
             {
                 con.Open();
                 string sql;
-                sql = "select * from news where type = " + type + "";
+                sql = "select * from news where type = " + type + "and passed = 1" ;
                 //获取数据数据适配器
                 SqlDataAdapter data = new SqlDataAdapter(sql, con);
                 data.Fill(ds);//把查询到的数据放入DataSet ds数据集中
@@ -464,5 +477,59 @@ namespace News_Management_System
                 return true;
             return false;
         }
+
+        /*
+        * 获取news未通过审核的新闻
+        * 返回值：DataSet数据集
+        */
+        public DataSet show_newsUnpassed()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                con.Open();
+                string sql = "select * from news where passed = 0";
+                //获取数据数据适配器
+                SqlDataAdapter data = new SqlDataAdapter(sql, con);
+                data.Fill(ds);//把查询到的数据放入DataSet ds数据集中
+                con.Close();
+            }
+            catch
+            {
+
+            }
+            if (con.State == ConnectionState.Open)
+                con.Close();
+            return ds;
+        }
+
+        /*新闻通过审核*/
+        public Boolean update_NewsPassed(int id)
+        {
+            //标题，分类，作者，日期，图片路径，正文
+            Boolean success = false;
+            //string search_psd = "";
+            try
+            {
+                con.Open();
+                string sql;
+                sql = "update news set passed = 1 where id = " + id;
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.ExecuteNonQuery();
+                success = true;
+                con.Close();
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine(e.ToString());
+            }
+            if (con.State == ConnectionState.Open)
+                con.Close();
+
+            if (success)
+                return true;
+            return false;
+        }
     }
+
 }

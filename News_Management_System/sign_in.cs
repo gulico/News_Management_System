@@ -61,12 +61,26 @@ namespace News_Management_System
                         break;
                     case 1:
                         MessageBox.Show("登陆成功");
-                        if(isUser)
-                            ((welcome)this.Tag).change_priviliege(1,name);
-                        else
-                            ((welcome)this.Tag).change_priviliege(2,name);
+                        ((welcome)this.Tag).change_priviliege(1,name,-1);
                         this.Close();
                         break;
+                    case 2:
+                        MessageBox.Show("最高权限管理员登陆成功");
+                        ((welcome)this.Tag).change_priviliege(2, name, 0);
+                        this.Close();
+                        break;
+                    case 3:
+                        MessageBox.Show("新闻审核员登陆成功");
+                        ((welcome)this.Tag).change_priviliege(2, name, 1);
+                        this.Close();
+                        break;
+                    case 4:
+                        MessageBox.Show("新闻录入员登陆成功");
+                        ((welcome)this.Tag).change_priviliege(2, name, 2);
+                        this.Close();
+                        break;
+                            
+                        
                 }
             }
         }

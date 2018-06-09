@@ -15,6 +15,7 @@ namespace News_Management_System
     public partial class welcome : CCSkinMain
     {
         public int sign_in_state = 0;//0:未登录;1:用户登录;2:管理员登录
+        public int limit = -1;//管理员级别：-1普通用户；0最高级别管理员；1新闻审核员；2新闻录入员
         public string name = "";
         DBHelper db;
         DataSet ds;
@@ -36,7 +37,7 @@ namespace News_Management_System
         public welcome()
         {
             InitializeComponent();
-            change_priviliege(0,"");
+            change_priviliege(0,"",-1);
             db = new DBHelper();
             db.Connection();
         }
@@ -193,14 +194,14 @@ namespace News_Management_System
             this.Hide();
             form_register.Show();
         }
-
+        /*按下管理按钮*/
         private void button3_Click(object sender, EventArgs e)
         {
-            Form form_manager = new manager();
+            Form form_manager = new manager(limit);
             form_manager.Show();
         }
 
-        public void change_priviliege(int newsign_in_state,string newname)
+        public void change_priviliege(int newsign_in_state,string newname,int newlimit)
         {
             sign_in_state = newsign_in_state;
             if (sign_in_state == 0)//未登录
@@ -218,11 +219,13 @@ namespace News_Management_System
                 //label2.Visible = true;
                 //label2.Text = "欢迎" + name + "!";
             }
-            else if(sign_in_state==2){//管理员登录
+            else if (sign_in_state == 2)
+            {//管理员登录
                 skinPanel2.Visible = false;//登录、注册按钮不可用
                 button5.Visible = true;//启用注销按钮
                 button3.Visible = true;//管理按钮启用
                 name = newname;
+                limit = newlimit;
                 //skinLabel1.Visible = true;
                // skinLabel1.Text = "欢迎管理员" + name + "!";
             }
@@ -230,7 +233,7 @@ namespace News_Management_System
 
         private void button5_Click(object sender, EventArgs e)
         {
-            change_priviliege(0, "");
+            change_priviliege(0, "",-1);
             MessageBox.Show("注销成功");
         }
 
